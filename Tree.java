@@ -39,7 +39,7 @@ public class Tree {
             return returnString;
         }
         returnString += toStringRec(current.getLeft());
-        returnString += current.toString();
+        returnString += current.toString() + ", ";
         returnString += toStringRec(current.getRight());
         return returnString;
     }
