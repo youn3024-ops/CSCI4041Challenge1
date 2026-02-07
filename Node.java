@@ -3,18 +3,67 @@ package CSCI4041Challenge1;
 //Written by YOUN3024
 
 public class Node {
-    private String name;
+    private String leftName;
+    private String rightName;
+    private String tempName;
+
     private Node leftChild;
+    private Node centerChild;
     private Node rightChild;
 
-    public Node(String name, Node leftChild, Node rightChild){
-        this.name = name;
+    public Node(String leftName, String rightName, Node leftChild, Node centerChild, Node rightChild){
+        this.leftName = leftName;
+        this.rightName = rightName;
+
         this.leftChild = leftChild;
+        this.centerChild = centerChild;
         this.rightChild = rightChild;
     }
+    public Node(String onlyName, Node leftChild, Node centerChild, Node rightChild){
+        this.leftName = onlyName;
+        this.rightName = null;
 
-    public String getVal(){
-        return this.name;
+        this.leftChild = leftChild;
+        this.centerChild = centerChild;
+        this.rightChild = rightChild;
+    }
+    public Node(String leftName, String rightName){
+        this.leftName = leftName;
+        this.rightName = rightName;
+
+        this.leftChild = null;
+        this.centerChild = null;
+        this.rightChild = null;
+    }
+    public Node(String onlyName){
+        this.leftName = onlyName;
+        this.rightName = null;
+
+        this.leftChild = null;
+        this.centerChild = null;
+        this.rightChild = null;
+    }
+
+    public String getVal(int idx){
+        if(idx == 0){
+            return this.leftName;
+        }
+        return this.rightName;
+    }
+    public String[] getVals(){
+        return new String[] {this.leftName, this.rightName};
+    }
+    public boolean setVal(String newVal, int idx){
+        if(idx == 0){
+            this.leftName = newVal;
+        }
+        this.rightName = newVal;
+        return true;
+    }
+    public boolean setVals(String[] newVals){
+        this.leftName = newVals[0];
+        this.rightName = newVals[1];
+        return true;
     }
 
     public Node getLeft(){
@@ -26,10 +75,30 @@ public class Node {
             return true;
         }
         Node grandLeft = this.leftChild.getLeft();
+        Node grandCenter = this.centerChild.getCenter();
         Node grandRight = this.rightChild.getRight();
         this.leftChild = newNode;
         this.leftChild.setLeft(grandLeft);
+        this.leftChild.setCenter(grandCenter);
         this.leftChild.setRight(grandRight);
+        return true;
+    }
+
+    public Node getCenter(){
+        return this.centerChild;
+    }
+    public boolean setCenter(Node newNode){
+        if(this.centerChild == null){
+            this.centerChild = newNode;
+            return true;
+        }
+        Node grandLeft = this.leftChild.getLeft();
+        Node grandCenter = this.centerChild.getCenter();
+        Node grandRight = this.rightChild.getRight();
+        this.centerChild = newNode;
+        this.centerChild.setLeft(grandLeft);
+        this.centerChild.setCenter(grandCenter);
+        this.centerChild.setRight(grandRight);
         return true;
     }
 
@@ -42,14 +111,22 @@ public class Node {
             return true;
         }
         Node grandLeft = this.rightChild.getLeft();
+        Node grandCenter = this.rightChild.getCenter();
         Node grandRight = this.rightChild.getRight();
         this.rightChild = newNode;
         this.rightChild.setLeft(grandLeft);
+        this.rightChild.setCenter(grandCenter);
         this.rightChild.setRight(grandRight);
         return true;
     }
 
     public String toString(){
-        return this.name;
+        return this.leftName + ", " + this.rightName;
+    }
+    public String toString(int idx){
+        if (idx==0){
+            return this.leftName;
+        }
+        return this.rightName;
     }
 }

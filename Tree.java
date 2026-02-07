@@ -17,7 +17,7 @@ public class Tree {
         return insertNodeRec(newNode, this.root);
     }
     public boolean insertNodeRec(Node newNode, Node current){
-        if (newNode.getVal().compareTo(current.getVal()) < 0){
+        if (newNode.getVal(0).compareTo(current.getVal(0)) < 0){
             if (current.getLeft() == null){
                 return current.setLeft(newNode);
             }
@@ -39,7 +39,9 @@ public class Tree {
             return returnString;
         }
         returnString += toStringRec(current.getLeft());
-        returnString += current.toString() + ", ";
+        returnString += current.toString(0) + ", ";
+        returnString += toStringRec(current.getCenter()) + ", ";
+        returnString += current.toString(1) + ", ";
         returnString += toStringRec(current.getRight());
         return returnString;
     }

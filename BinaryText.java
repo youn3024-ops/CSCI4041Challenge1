@@ -7,19 +7,19 @@ public class BinaryText {
         System.out.println("Hello, World!");
 
         Tree myTree = new Tree();
-        Node myNode = new Node("Charlie", null, null);
+        Node myNode = new Node("Charlie");
         myTree.insertNode(myNode);
-        myNode = new Node("Tango", null, null);
+        myNode = new Node("Tango");
         myTree.insertNode(myNode);
-        myNode = new Node("Foxtrot", null, null);
+        myNode = new Node("Foxtrot");
         myTree.insertNode(myNode);
-        myNode = new Node("Zulu", null, null);
+        myNode = new Node("Zulu");
         myTree.insertNode(myNode);
-        myNode = new Node("Hotel", null, null);
+        myNode = new Node("Hotel");
         myTree.insertNode(myNode);
-        myNode = new Node("Mike", null, null);
+        myNode = new Node("Mike");
         myTree.insertNode(myNode);
-        myNode = new Node("Whiskey", null, null);
+        myNode = new Node("Whiskey");
         myTree.insertNode(myNode);
         System.out.println(myTree);
     }
