@@ -11,6 +11,8 @@ public class Node {
     private Node centerChild;
     private Node rightChild;
 
+    private Node parent;
+
     public Node(String leftName, String rightName, Node leftChild, Node centerChild, Node rightChild){
         this.leftName = leftName;
         this.rightName = rightName;
@@ -18,6 +20,8 @@ public class Node {
         this.leftChild = leftChild;
         this.centerChild = centerChild;
         this.rightChild = rightChild;
+
+        this.parent = null;
     }
     public Node(String onlyName, Node leftChild, Node centerChild, Node rightChild){
         this.leftName = onlyName;
@@ -26,6 +30,8 @@ public class Node {
         this.leftChild = leftChild;
         this.centerChild = centerChild;
         this.rightChild = rightChild;
+
+        this.parent = null;
     }
     public Node(String leftName, String rightName){
         this.leftName = leftName;
@@ -34,6 +40,8 @@ public class Node {
         this.leftChild = null;
         this.centerChild = null;
         this.rightChild = null;
+
+        this.parent = null;
     }
     public Node(String onlyName){
         this.leftName = onlyName;
@@ -42,6 +50,8 @@ public class Node {
         this.leftChild = null;
         this.centerChild = null;
         this.rightChild = null;
+
+        this.parent = null;
     }
 
     public String getVal(int idx){
@@ -66,6 +76,14 @@ public class Node {
         return true;
     }
 
+    public Node getParent(){
+        return this.parent;
+    }
+    public boolean setParent(Node newNode){
+        this.parent = newNode;
+        return true;
+    }
+
     public Node getLeft(){
         return this.leftChild;
     }
@@ -81,6 +99,7 @@ public class Node {
         this.leftChild.setLeft(grandLeft);
         this.leftChild.setCenter(grandCenter);
         this.leftChild.setRight(grandRight);
+        this.leftChild.setParent(this);
         return true;
     }
 
@@ -99,6 +118,7 @@ public class Node {
         this.centerChild.setLeft(grandLeft);
         this.centerChild.setCenter(grandCenter);
         this.centerChild.setRight(grandRight);
+        this.centerChild.setParent(this);
         return true;
     }
 
@@ -117,6 +137,7 @@ public class Node {
         this.rightChild.setLeft(grandLeft);
         this.rightChild.setCenter(grandCenter);
         this.rightChild.setRight(grandRight);
+        this.rightChild.setParent(this);
         return true;
     }
 
